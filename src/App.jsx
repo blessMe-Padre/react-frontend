@@ -30,8 +30,10 @@ function App() {
         ))}
       </ul>
 
-      <p className='text'>Тут будет форма</p>
-      <Form />
+      <h2 className='page-title'>Форма обратной связи</h2>
+      <div className='flex-wrapper'>
+        <Form />
+      </div>
     </div>
   );
 }

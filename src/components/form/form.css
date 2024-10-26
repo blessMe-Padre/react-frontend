@@ -1,10 +1,27 @@
-.form-send-ok-popup {
+.main-form {
+    width: 600px;
+}
 
-    position: absolute;
+.main-form__error-text {
+    color: red;
+}
+
+.main-form__input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.main-form__input input{
+    padding: 10px 20px;
+}
+
+.form-send-ok-popup {
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 
     width: 400px;
     height: 250px;

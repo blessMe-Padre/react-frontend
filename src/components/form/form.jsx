@@ -6,28 +6,31 @@ import './form.css';
 
 const initialFields = [
     {
-        label: 'name',
+        label: 'Имя',
         type: 'text',
         name: 'text-412',
         id: 'text-412',
         validation_error: false,
         validation_message: '',
+        placeholder: 'Введите ваше имя',
     },
     {
-        label: 'email',
+        label: 'Email',
         type: 'email',
         name: 'email-540',
         id: 'email-540',
         validation_error: false,
         validation_message: '',
+        placeholder: 'Введите ваш email',
     },
     {
-        label: 'phone',
+        label: 'Телефон',
         type: 'tel',
         name: 'tel-533',
         id: 'tel-533',
         validation_error: false,
         validation_message: '',
+        placeholder: 'Введите ваш телефон',
     },
 ]
 
@@ -51,17 +54,16 @@ export default function Form() {
             'https://api.freelancer-vl.ru/wp-json/contact-form-7/v1/contact-forms/38/feedback',
             formData,
         );
-
+        // console.log('Ответ от WordPress:', response);
         if (response.status !== 200) {
             return alert('Что-то пошло не так. Попробуйте еще раз.');
         }
-
-        console.log('Ответ от WordPress:', response);
 
         if (response.data.invalid_fields && response.data.invalid_fields.length > 0) {
             setFields(fields.map(field => {
                 const error = response.data.invalid_fields.find(x => x.field === field.name);
 
+                setIsActive(false);
                 return {
                     ...field,
                     validation_error: !!error,
@@ -69,9 +71,10 @@ export default function Form() {
                 };
             }));
         }
-
+        else {
+            setIsActive(true);
+        }
         setFormMessage(response.data.message);
-        setIsActive(true);
     };
 
 
@@ -79,16 +82,15 @@ export default function Form() {
         <>
             <form onSubmit={handleSubmit} className="main-form">
                 {fields.map(field => (
-                    <div key={field.id}>
+                    <div key={field.id} className='main-form__input'>
                         <label>{field.label}</label>
-                        <input type={field.type} name={field.name} id={field.id} />
-                        <p className='text-red'>{field.validation_message}</p>
+                        <input type={field.type} name={field.name} id={field.id} placeholder={field.placeholder} />
+                        <p className='main-form__error-text'>{field.validation_message}</p>
                     </div>
                 ))}
                 <button type="submit">Отправить</button>
             </form>
-            <p>{formMessage}</p>
-
+            <p className='main-form__error-text mt-25'>{formMessage}</p>
 
             <div className={`form-send-ok-popup ${isActive ? 'is-active' : ''}`}>
                 <p>Сообщение успешно отправлено</p>
