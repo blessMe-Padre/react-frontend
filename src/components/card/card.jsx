@@ -24,7 +24,7 @@ function Card({ post }) {
 
     return (
         <li className='card'>
-            <img src={featuredImage} alt="" />
+            <img src={featuredImage} width={393} height={300} alt="image" />
             <h2>{post.title.rendered}</h2>
             <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
             <a href={post.link}>перейти</a>

@@ -28,6 +28,8 @@ function App() {
           <Card key={post.id} post={post} />
         ))}
       </ul>
+
+      <p className='text'>Тут будет форма</p>
     </div>
   );
 }

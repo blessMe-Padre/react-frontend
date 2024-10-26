@@ -6,4 +6,4 @@
 6. для API или других хуков/функций составить JSDoc документацию (максимально подробную)
 7. zustand
 8. добавить darkmode
-9. github pages
+9. github pages. Читать https://www.vd-developer.online/blog/vite-react-deploy-github Видео https://www.youtube.com/@VladyslavDihtiarenko
