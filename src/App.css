@@ -1,6 +1,9 @@
 .text {
     font-size: 36px;
 }
+.text-red {
+    color: red;
+}
 
 .post-list {
     list-style: none;

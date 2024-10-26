@@ -1,0 +1,28 @@
+.form-send-ok-popup {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    width: 400px;
+    height: 250px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 19px;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.form-send-ok-popup.is-active {
+    opacity: 1;
+    visibility: visible;
+}

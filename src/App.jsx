@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from './components/card/card';
 import './App.css'
+import Form from './components/form/form';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -22,7 +23,7 @@ function App() {
   }, []);
   return (
     <div className='container'>
-      <h1 className='page-title'>Вывод постов из API</h1>
+      <h1 className='page-title'>Вывод всех постов из API</h1>
       <ul className='post-list'>
         {posts.map((post) => (
           <Card key={post.id} post={post} />
@@ -30,6 +31,7 @@ function App() {
       </ul>
 
       <p className='text'>Тут будет форма</p>
+      <Form />
     </div>
   );
 }
