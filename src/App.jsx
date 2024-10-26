@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import Card from './components/card/card';
 import './App.css'
 
 function App() {
   const [posts, setPosts] = useState([]);
 
-  const fetchPost = () => {
+  const getAllPost = () => {
     axios
-      .get("http://api/wp-json/wp/v2/posts")
+      .get("https://api.freelancer-vl.ru/wp-json/wp/v2/posts")
       .then((res) => {
         setPosts(res.data);
       })
@@ -18,17 +18,14 @@ function App() {
   }
 
   useEffect(() => {
-    fetchPost();
+    getAllPost();
   }, []);
-
   return (
     <div className='container'>
-      <h1>Вывод постов из API</h1>
-      <ul>
+      <h1 className='page-title'>Вывод постов из API</h1>
+      <ul className='post-list'>
         {posts.map((post) => (
-          <li key={post.id}>
-            <h2>{post.title.rendered}</h2>
-          </li>
+          <Card key={post.id} post={post} />
         ))}
       </ul>
     </div>
