@@ -2,9 +2,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './card.css'
+import { Link } from 'react-router-dom';
 
 function Card({ post }) {
-
     const [featuredImage, setFeaturedImage] = useState();
 
     const getPostImage = () => {
@@ -27,7 +27,7 @@ function Card({ post }) {
             <img src={featuredImage} width={393} height={300} alt="image" />
             <h2>{post.title.rendered}</h2>
             <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
-            <a href={post.link}>перейти</a>
+            <Link key={post.id} to={`/react-frontend/blog/${post.id}`}>перейти</Link>
         </li>
     )
 }

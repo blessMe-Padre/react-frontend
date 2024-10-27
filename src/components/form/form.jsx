@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import successImg from './../../../public/success.webp';
+import successImg from '/success.webp';
 
 import './form.css';
 
