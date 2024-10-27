@@ -5,6 +5,8 @@ import './card.css'
 import { Link } from 'react-router-dom';
 
 function Card({ post }) {
+    console.log(post);
+
     const [featuredImage, setFeaturedImage] = useState();
 
     const getPostImage = () => {
@@ -27,9 +29,10 @@ function Card({ post }) {
             <img src={featuredImage} width={393} height={300} alt="image" />
             <h2>{post.title.rendered}</h2>
             <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
-            <Link key={post.id} to={`/react-frontend/blog/${post.id}`}>перейти</Link>
+            <Link key={post.id} to={`/react-frontend/blog/${post.id}`} state={{ post }}>перейти</Link>
         </li>
     )
 }
 
 export default Card;
+
