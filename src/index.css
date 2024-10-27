@@ -114,3 +114,18 @@ button:focus-visible {
   justify-content: center;
   padding-bottom: 50px;
 }
+
+.components-wrapper {
+  display: flex;
+  gap: 40px;
+}
+
+.components-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.text-orange {
+  color: #f38e06;
+}

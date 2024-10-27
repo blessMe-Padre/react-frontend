@@ -9,6 +9,7 @@ export default function Header() {
                 <Link to="/react-frontend/blog">Блог</Link>
                 <Link to="/react-frontend/contact">Контакты</Link>
                 <Link to="/react-frontend/about">О компании</Link>
+                <Link to="/react-frontend/components">Компоненты</Link>
             </nav>
         </header>
     )

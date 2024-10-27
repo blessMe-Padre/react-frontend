@@ -13,6 +13,9 @@ import Blog from './routes/Blog.jsx';
 import Contact from './routes/Contact.jsx';
 import ErrorPage from './routes/ErrorPage.jsx';
 import SinglePost from './routes/SinglePost.jsx';
+import ComponentsPage from './routes/ComponentsPage.jsx';
+import Template from './components/template/Template.jsx';
+import Form from './components/form/form.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +42,21 @@ const router = createBrowserRouter([
     path: "/react-frontend/contact/",
     element: <Contact />,
     // errorElement: <ErrorPage />,
+  },
+  {
+    path: "/react-frontend/components/",
+    element: <ComponentsPage />,
+    // errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/react-frontend/components/form",
+        element: <Form />,
+      },
+      {
+        path: "/react-frontend/components/:id",
+        element: <Template />,
+      },
+    ],
   },
 ]);
 
