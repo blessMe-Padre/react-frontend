@@ -5,7 +5,6 @@ import './card.css'
 import { Link } from 'react-router-dom';
 
 function Card({ post }) {
-    console.log(post);
 
     const [featuredImage, setFeaturedImage] = useState();
 

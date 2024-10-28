@@ -6,6 +6,9 @@ import Header from '../components/header/header';
 
 export default function Blog() {
     const [posts, setPosts] = useState([]);
+    const [postsHtml, setPostsHtml] = useState([]);
+
+    console.log(postsHtml);
 
 
     const getAllPost = () => {
@@ -23,6 +26,21 @@ export default function Blog() {
         getAllPost();
     }, []);
 
+    const getPostByCategoriesId = (id) => {
+        axios
+            .get(`https://api.freelancer-vl.ru/wp-json/wp/v2/posts/?categories=${id}`)
+            .then((res) => {
+                setPostsHtml(res.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching posts:', error);
+            });
+    }
+
+    useEffect(() => {
+        getPostByCategoriesId(5);
+    }, []);
+
     return (
         <div className='container'>
             <Header />
@@ -31,6 +49,13 @@ export default function Blog() {
             <ul className='post-list'>
                 {posts.map((post) => (
                     <Card key={post.id} post={post} />
+                ))}
+            </ul>
+
+            <h2 className='page-title'>Вывод всех постов из категории &quot;html&quot; с id=&quot;5&quot;</h2>
+            <ul className='post-list'>
+                {postsHtml.map((posts) => (
+                    <Card key={posts.id} post={posts} />
                 ))}
             </ul>
             <footer>footer</footer>
