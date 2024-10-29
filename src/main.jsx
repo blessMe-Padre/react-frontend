@@ -11,8 +11,10 @@ import Homepage from './routes/Homepage.jsx';
 import About from './routes/About.jsx';
 import Blog from './routes/Blog.jsx';
 import Contact from './routes/Contact.jsx';
+import Products from './routes/Products.jsx';
 import ErrorPage from './routes/ErrorPage.jsx';
 import SinglePost from './routes/SinglePost.jsx';
+import SingleProduct from './routes/SingleProduct.jsx';
 import ComponentsPage from './routes/ComponentsPage.jsx';
 import Template from './components/template/Template.jsx';
 import Form from './components/form/form.jsx';
@@ -41,6 +43,16 @@ const router = createBrowserRouter([
   {
     path: "/react-frontend/contact/",
     element: <Contact />,
+    // errorElement: <ErrorPage />,
+  },
+  {
+    path: "/react-frontend/products/",
+    element: <Products />,
+    // errorElement: <ErrorPage />,
+  },
+  {
+    path: "/react-frontend/products/:productId",
+    element: <SingleProduct />,
     // errorElement: <ErrorPage />,
   },
   {

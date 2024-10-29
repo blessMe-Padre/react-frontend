@@ -8,9 +8,6 @@ export default function Blog() {
     const [posts, setPosts] = useState([]);
     const [postsHtml, setPostsHtml] = useState([]);
 
-    console.log(postsHtml);
-
-
     const getAllPost = () => {
         axios
             .get("https://api.freelancer-vl.ru/wp-json/wp/v2/posts")
