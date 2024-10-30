@@ -7,6 +7,9 @@ import Header from '../components/header/header';
 function Homepage() {
     const [posts, setPosts] = useState([]);
 
+
+
+
     const getAllPost = () => {
         axios
             .get("https://api.freelancer-vl.ru/wp-json/wp/v2/posts")
@@ -23,6 +26,7 @@ function Homepage() {
     }, []);
     return (
         <div className='container'>
+            <>test</>
             <Header />
 
             <h1 className='page-title'>Вывод всех постов из API</h1>
