@@ -9,4 +9,3 @@
 9. github pages. Читать https://www.vd-developer.online/blog/vite-react-deploy-github Видео https://www.youtube.com/@VladyslavDihtiarenko
 10. Пока картинки не загрузились устанавливать спиннер
 11. поиск на фронте на записям
-12. Создать кастомный тип записей "{название-записи}"
