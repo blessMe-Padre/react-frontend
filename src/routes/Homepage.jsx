@@ -26,7 +26,6 @@ function Homepage() {
     }, []);
     return (
         <div className='container'>
-            <>test</>
             <Header />
 
             <h1 className='page-title'>Вывод всех постов из API</h1>

@@ -1,42 +1,33 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 
 import Card from '../components/card/card';
 import Header from '../components/header/header';
 
+import { getAllPosts, getPostsByCategory } from '../api/api.jsx';
+
+
 export default function Blog() {
-    const [posts, setPosts] = useState([]);
-    const [postsHtml, setPostsHtml] = useState([]);
-
-    const getAllPost = () => {
-        axios
-            .get("https://api.freelancer-vl.ru/wp-json/wp/v2/posts")
-            .then((res) => {
-                setPosts(res.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching posts:', error);
-            });
-    }
+    const [allPosts, setAllPosts] = useState([]);
+    const [categoryPosts, setCategoryPosts] = useState([]);
 
     useEffect(() => {
-        getAllPost();
-    }, []);
+        const fetchData = async () => {
+            try {
+                const allPostsData = await getAllPosts();
+                setAllPosts(allPostsData);
+        
+                const categoryPostsData = await getPostsByCategory(5);
+                setCategoryPosts(categoryPostsData);
+            } catch (error) {
+                console.error("Error fetching data:", error); 
+            }
+        };
 
-    const getPostByCategoriesId = (id) => {
-        axios
-            .get(`https://api.freelancer-vl.ru/wp-json/wp/v2/posts/?categories=${id}`)
-            .then((res) => {
-                setPostsHtml(res.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching posts:', error);
-            });
-    }
+        fetchData();
 
-    useEffect(() => {
-        getPostByCategoriesId(5);
     }, []);
+      
+ 
 
     return (
         <div className='container'>
@@ -44,14 +35,14 @@ export default function Blog() {
 
             <h1 className='page-title'>Вывод всех постов из API</h1>
             <ul className='post-list'>
-                {posts.map((post) => (
+                {allPosts.map((post) => (
                     <Card key={post.id} post={post} />
                 ))}
             </ul>
 
             <h2 className='page-title'>Вывод всех постов из категории &quot;html&quot; с id=&quot;5&quot;</h2>
             <ul className='post-list'>
-                {postsHtml.map((posts) => (
+                {categoryPosts.map((posts) => (
                     <Card key={posts.id} post={posts} />
                 ))}
             </ul>
