@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+
+import { getAllProducts } from '../api/api';
 
 import Header from "../components/header/header";
 import ProductCard from '../components/product/ProductCard';
@@ -9,24 +10,22 @@ export default function Products() {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    // тут используется выборочный запрос в api (id,title,acf_fields)
-    const getAllProducts = () => {
-        setIsLoading(true);
-        axios
-            .get("https://api.freelancer-vl.ru/wp-json/wp/v2/product?acf_format=standart&_fields=id,title,acf_fields")
-            .then((res) => {
-                setProducts(res.data);
-                setIsLoading(false);
-            })
-            .catch((error) => {
-                console.error('Error fetching posts:', error);
-            });
-    }
-
     useEffect(() => {
-        getAllProducts();
-    }, []);
+        const fetchProducts = async () => {
+            setIsLoading(true);
+            try {
+                const allProducts = await getAllProducts();
+                if(allProducts != 0) {
+                    setIsLoading(false);
+                    setProducts(allProducts);
+                }
+            } catch (error) {
+                console.error("Error fetching products:", error); 
+            }
+        } 
 
+        fetchProducts();
+    }, []);
 
     return (
         <div className="container">

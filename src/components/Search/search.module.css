@@ -1,0 +1,30 @@
+.search__wrapper {
+    display: block;
+    position: relative;
+}
+
+.search__input {
+    position: relative;
+    width: 100%;
+    background-color: #646cff;
+    padding: 10px;
+    border-radius: 30px;
+    border: 1px solid inherit;
+    background-image: url('../../assets/imgs/search.svg');
+    background-repeat: no-repeat;
+    background-position: top right 10px;
+    background-size: 20px 35px;
+    max-width: 500px;
+
+}
+
+
+.search__results {
+    position: absolute;
+    top: 50px;
+    border: 1px solid gray;
+    background-color: white;
+    border-radius: 30px;
+    transition: all 0.5s ease-in-out;
+    padding: 30px;
+}
