@@ -22,4 +22,16 @@ const getPostsByCategory = async (categoryId) => {
     }
 };
 
-export { getAllPosts, getPostsByCategory };
+const getAllProducts = async () => {
+    // setIsLoading(true);
+    try {
+        const response = await axios.get("https://api.freelancer-vl.ru/wp-json/wp/v2/product?acf_format=standart&_fields=id,title,acf_fields");
+        return response.data;
+    } catch (error) {
+        console.error(`Error fetching products:`, error);
+        throw error; 
+    }
+}
+
+
+export { getAllPosts, getPostsByCategory, getAllProducts };

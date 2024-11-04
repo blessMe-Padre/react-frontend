@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import './header.css';
+import InputSearch from "../Search/InputSearch";
 
 export default function Header() {
     return (
@@ -12,6 +13,8 @@ export default function Header() {
                 <Link to="/react-frontend/components">Компоненты</Link>
                 <Link to="/react-frontend/products">Продукты</Link>
             </nav>
+
+            <InputSearch />
         </header>
     )
 }
