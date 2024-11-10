@@ -15,14 +15,14 @@ export default function Products() {
             setIsLoading(true);
             try {
                 const allProducts = await getAllProducts();
-                if(allProducts != 0) {
+                if (allProducts != 0) {
                     setIsLoading(false);
                     setProducts(allProducts);
                 }
             } catch (error) {
-                console.error("Error fetching products:", error); 
+                console.error("Error fetching products:", error);
             }
-        } 
+        }
 
         fetchProducts();
     }, []);
@@ -33,11 +33,11 @@ export default function Products() {
 
             <div className="page-title">Продукты - кастомные типы записей</div>
             <ul className='post-list'>
-                {isLoading &&
+                {/* {isLoading &&
                     [...Array(3)].map((item) => (
                         <li key={item}><ProductSkeleton /></li>
                     ))
-                }
+                } */}
 
                 {products.map((product) => (
                     <ProductCard key={product.id} product={product} />

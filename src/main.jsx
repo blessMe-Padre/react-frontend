@@ -18,6 +18,7 @@ import SingleProduct from './routes/SingleProduct.jsx';
 import ComponentsPage from './routes/ComponentsPage.jsx';
 import Template from './components/template/Template.jsx';
 import Form from './components/form/form.jsx';
+import Registration from './routes/Registration.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
   {
     path: "/react-frontend/about/",
     element: <About />,
+    // errorElement: <ErrorPage />,
+  },
+  {
+    path: "/react-frontend/registration/",
+    element: <Registration />,
     // errorElement: <ErrorPage />,
   },
   {
@@ -75,5 +81,5 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>,
+  </StrictMode>
 )

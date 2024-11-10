@@ -12,6 +12,7 @@ export default function Header() {
                 <Link to="/react-frontend/about">О компании</Link>
                 <Link to="/react-frontend/components">Компоненты</Link>
                 <Link to="/react-frontend/products">Продукты</Link>
+                <Link to="/react-frontend/registration">Регистрация</Link>
             </nav>
 
             <InputSearch />
