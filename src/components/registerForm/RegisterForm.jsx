@@ -4,7 +4,7 @@ import { useState } from 'react';
 const RegisterForm = () => {
     const headers = new Headers();
 
-    headers.set('Content-type', 'application/json');
+    headers.set('Content-Type', 'application/json');
     headers.set('Authorization', 'Basic ' + btoa('api-admin:uuR3 S9V9 eVlR F45f YDqV NZT5'));
 
 
