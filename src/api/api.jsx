@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiBaseUrl = "https://api.freelancer-vl.ru/wp-json/wp/v2/posts";
+const apiBaseUrl = "https://api.freelancer-vl.ru/wp-json/wp/v2/posts?status=publish,draft,trash";
 
 const getAllPosts = async () => {
     try {
