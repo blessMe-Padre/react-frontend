@@ -11,7 +11,7 @@ function Homepage() {
         axios
             .get("https://api.freelancer-vl.ru/wp-json/wp/v2/posts?status=publish,draft,trash", {
                 "headers": {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'application/json',
                     'Authorization': 'Basic ' + btoa('api-admin:wkan)i44GgLBx*EwKd')
                 }
             })
