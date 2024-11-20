@@ -16,6 +16,7 @@ function Card({ post }) {
             })
             .catch((error) => {
                 console.error('Error fetching posts:', error);
+                setFeaturedImage('https://placehold.co/600x400.png');
             });
     }
 
