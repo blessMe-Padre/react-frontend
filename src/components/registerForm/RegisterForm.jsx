@@ -5,7 +5,9 @@ const RegisterForm = () => {
     const headers = new Headers();
 
     headers.set('Content-Type', 'application/json');
-    headers.set('Authorization', 'Basic ' + btoa('api-admin:uuR3 S9V9 eVlR F45f YDqV NZT5'));
+    // headers.set('Content-Type', 'multipart/form-data');
+    // headers.set('Authorization', 'Basic ' + btoa('api-admin:uuR3S9V9eVlRF45fYDqVNZT5'));
+    headers.set('Authorization', 'Basic ' + btoa('api-admin:wkan)i44GgLBx*EwKd'));
 
 
     const [formData, setFormData] = useState({
