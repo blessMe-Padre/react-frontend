@@ -7,6 +7,7 @@ export default function SingleProduct() {
     const location = useLocation();
     const product = location.state?.product;
 
+
     return (
         <div className="container">
             <Header />

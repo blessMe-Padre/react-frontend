@@ -56,7 +56,7 @@ const searchProduct = async ({ type, subtype, search, page, per_page }) => {
             throw new Error(`API request failed with status ${response.status}`);
         }
     } catch (error) {
-        console.error('Error searching products:', error, response.request);
+        console.error('Error searching products:', error);
         throw error;
     }
 
