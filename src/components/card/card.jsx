@@ -9,15 +9,22 @@ function Card({ post }) {
     const [featuredImage, setFeaturedImage] = useState();
 
     const getPostImage = () => {
-        axios
-            .get(post?._links["wp:featuredmedia"][0]?.href)
-            .then((res) => {
-                setFeaturedImage(res.data.source_url);
-            })
-            .catch((error) => {
-                console.error('Error fetching posts:', error);
-                setFeaturedImage('https://placehold.co/600x400.png');
-            });
+        const mediaLink = post?._links?.["wp:featuredmedia"]?.[0]?.href;
+
+        if (mediaLink) {
+            axios
+                .get(mediaLink)
+                .then((res) => {
+                    setFeaturedImage(res.data.source_url);
+                })
+                .catch((error) => {
+                    console.error('Error fetching post image:', error);
+                    setFeaturedImage('https://placehold.co/600x400.png');
+                });
+        } else {
+            console.warn('Media link not found');
+            setFeaturedImage('https://placehold.co/600x400.png');
+        }
     }
 
     useEffect(() => {
