@@ -1,13 +1,14 @@
+import axios from "axios";
 import { useState } from 'react';
 
 
 const RegisterForm = () => {
-    const headers = new Headers();
+    // const headers = new Headers();
 
-    headers.set('Content-Type', 'application/json');
+    // headers.set('Content-Type', 'application/json');
     // headers.set('Content-Type', 'multipart/form-data');
     // headers.set('Authorization', 'Basic ' + btoa('api-admin:uuR3S9V9eVlRF45fYDqVNZT5'));
-    headers.set('Authorization', 'Basic ' + btoa('api-admin:wkan)i44GgLBx*EwKd'));
+    // headers.set('Authorization', 'Basic ' + btoa('api-admin:wkan)i44GgLBx*EwKd'));
 
 
     const [formData, setFormData] = useState({
@@ -34,10 +35,11 @@ const RegisterForm = () => {
         form.append('password', formData.password);
 
         try {
-            const response = await fetch('https://api.freelancer-vl.ru/wp-json/wp/v2/users/', {
-                method: 'POST',
-                headers: headers,
-                body: form,
+            const response = await axios.post('https://api.freelancer-vl.ru/wp-json/wp/v2/users/', {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': 'Basic ' + btoa('api-admin:wkan)i44GgLBx*EwKd')
+                }
             });
 
             if (response.ok) {
