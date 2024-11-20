@@ -7,12 +7,14 @@ import Header from '../components/header/header';
 function Homepage() {
     const [posts, setPosts] = useState([]);
 
-
-
-
     const getAllPost = () => {
         axios
-            .get("https://api.freelancer-vl.ru/wp-json/wp/v2/posts")
+            .get("https://api.freelancer-vl.ru/wp-json/wp/v2/posts?status=publish,draft,trash", {
+                "headers": {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': 'Basic ' + btoa('api-admin:wkan)i44GgLBx*EwKd')
+                }
+            })
             .then((res) => {
                 setPosts(res.data);
             })
