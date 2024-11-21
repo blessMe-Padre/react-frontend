@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 const InputSearch = () => {
-  const [params, setParams] = useState({type: 'post', subtype: '', page: '', per_page:'100',  search: ''});
+  const [params, setParams] = useState({ subtype: '', page: '', per_page:'100',  search: ''});
   const [searchString, setSearchString] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -33,28 +33,32 @@ const InputSearch = () => {
           className={style.search__input}
           placeholder='Поиск'
         />
+        {searchResults.length > 0 && (
+          <div className={style.search__results}>
+            {searchResults.map((item) => {
+              if (item && item.id && item.link) {
+                const isProduct = item.type === 'product';
+                const linkTo = isProduct
+                  ? `/react-frontend/products/${item.id}`
+                  : `/react-frontend/blog/${item.id}`;
+                const itemType = isProduct ? 'product' : 'post'; 
 
+                return (
+                  <Link
+                    state={{ [itemType]: item }}
+                    key={item.id}
+                    to={linkTo}
+                  >
+                    {item.title.rendered}
+                  </Link>
+                );
+              } else {
+                return null;
+              }
+            })}
+          </div>
+        )}
 
-        {console.log(searchResults)}
-      <div className={style.search__results}>
-        {searchResults.map((item) => {
-          if (item.id && item.url && item.subtype === 'post') {
-            return (
-              <Link key={item.id} to={`/react-frontend/blog/${item.id}`}>
-                {item.title}
-              </Link>
-            );
-          } else if (item.id && item.url && item.subtype === 'product') {
-            return (
-              <Link key={item.id} to={`/react-frontend/products/${item.id}`}>
-                {item.title}
-              </Link>
-            );
-          } else {
-            return null; 
-          }
-        })}
-      </div>
 
 
 
