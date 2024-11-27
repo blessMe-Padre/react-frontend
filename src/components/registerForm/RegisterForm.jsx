@@ -37,10 +37,12 @@ const RegisterForm = () => {
         try {
             const response = await axios.post('https://api.freelancer-vl.ru/wp-json/wp/v2/users/', {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'application/json',
                     'Authorization': 'Basic ' + btoa('api-admin:wkan)i44GgLBx*EwKd')
-                }
+                },
+                body: form
             });
+            console.log(form);
 
             if (response.ok) {
                 const data = await response.json();

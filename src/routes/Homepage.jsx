@@ -9,7 +9,13 @@ function Homepage() {
 
     const getAllPost = () => {
         axios
-            .get("https://api.freelancer-vl.ru/wp-json/wp/v2/posts?status=publish,draft,trash", {
+            // .get("https://api.freelancer-vl.ru/wp-json/wp/v2/posts?status=publish,draft,trash", {
+            //     "headers": {
+            //         'Content-Type': 'application/json',
+            //         'Authorization': 'Basic ' + btoa('api-admin:wkan)i44GgLBx*EwKd')
+            //     }
+            // })
+            .get("https://api.freelancer-vl.ru/wp-json/wp/v2/posts?status=publish,draft", {
                 "headers": {
                     'Content-Type': 'application/json',
                     'Authorization': 'Basic ' + btoa('api-admin:wkan)i44GgLBx*EwKd')
@@ -19,7 +25,7 @@ function Homepage() {
                 setPosts(res.data);
             })
             .catch((error) => {
-                console.error('Error fetching posts:', error);
+                console.error('Ошибка в запросе:', error);
             });
     }
 
