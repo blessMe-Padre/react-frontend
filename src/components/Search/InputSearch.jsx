@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 const InputSearch = () => {
-  const [params, setParams] = useState({type: '', subtype: '', page: '', per_page:'',  search: ''});
+  const [params, setParams] = useState({ subtype: '', page: '', per_page:'100',  search: ''});
   const [searchString, setSearchString] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -16,7 +16,7 @@ const InputSearch = () => {
   };
 
   useEffect(() => {
-    if (searchString) {
+    if (searchString && searchString.length >= 3) {
      searchProduct(params) 
       .then(data => setSearchResults(data))
       .catch(error => console.error('Error searching:', error));
@@ -33,18 +33,35 @@ const InputSearch = () => {
           className={style.search__input}
           placeholder='Поиск'
         />
+        {searchResults.length > 0 && (
+          <div className={style.search__results}>
+            {searchResults.map((item) => {
+              if (item && item.id && item.link) {
+                const isProduct = item.type === 'product';
+                const linkTo = isProduct
+                  ? `/react-frontend/products/${item.id}`
+                  : `/react-frontend/blog/${item.id}`;
+                const itemType = isProduct ? 'product' : 'post'; 
 
-
-
-        {searchResults.length > 0 && searchString.length > 0 && ( 
-            <div className={style.search__results}>
-                {searchResults.map((item, idx) => ( 
-                <option key={idx} value={item.url}> 
-                    <Link to={item.url}>{item.title}</Link>
-                </option>
-                ))}
-            </div>
+                return (
+                  <Link
+                    state={{ [itemType]: item }}
+                    key={item.id}
+                    to={linkTo}
+                  >
+                    {item.title.rendered}
+                  </Link>
+                );
+              } else {
+                return null;
+              }
+            })}
+          </div>
         )}
+
+
+
+
       </div>
 
      
